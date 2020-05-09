@@ -1,13 +1,13 @@
 package com.warungpintar.simpleapi.view.response;
 
-import java.util.Date;
-
 public class BaseResponse {
     private long latency;
 
     private String status;
 
     private String message;
+
+    private Object content;
 
     public BaseResponse(){
 
@@ -35,5 +35,13 @@ public class BaseResponse {
 
     public void setMessage(String message) {
         this.message = message;
+    }
+
+    public Object getContent() {
+        return content;
+    }
+
+    public void setContent(Object content) {
+        this.content = content;
     }
 }

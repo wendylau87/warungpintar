@@ -9,6 +9,8 @@ import com.warungpintar.simpleapi.view.response.BaseResponse;
 import com.warungpintar.simpleapi.view.response.HistoryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
+import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,6 +24,8 @@ public class GreetController {
 
     @PostMapping(value = "/send", produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseBody
+    @MessageMapping("/hello")
+    @SendTo("/topic/greetings")
     public BaseResponse send(@RequestBody GreetRequest request) {
         return service.send(request);
     }
